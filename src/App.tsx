@@ -1,7 +1,5 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, IonContent, IonHeader, IonPage, IonRouterOutlet, IonTitle, IonToolbar, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,6 +30,12 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { Route } from 'react-router';
+import { ListGamesPage } from './pages/list-games/ListGamesPage';
+import { DadosPage } from './pages/dados/DadosPage';
+import { LoginPage } from './pages/login/LoginPage';
+import { UserInfoPage } from './pages/user-info/UserInfoPage';
+import { BadgesPage } from './pages/badges/Badges';
 
 setupIonicReact();
 
@@ -39,12 +43,15 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
+        <IonPage>
+          <IonContent fullscreen>
+            <Route exact path="/" component={ListGamesPage} />
+            <Route exact path="/dados" component={DadosPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/welcome" component={UserInfoPage} />
+            <Route exact path="/badges" component={BadgesPage} />
+          </IonContent>
+        </IonPage>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

@@ -1,0 +1,7 @@
+.header-items {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    gap: 25px;
+}
